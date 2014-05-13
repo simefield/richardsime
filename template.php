@@ -40,16 +40,19 @@
             </div>
             */ ?>
 
+            <?php /*
             <nav>
                 <ul>
                     <li><a href="./">Portfolio</a></li>
                     <li><a href="./about-me.php">About me</a></li>
                 </ul>
             </nav>
+            */ ?>
+
             <header itemscope itemtype="http://schema.org/Person" role='header'>
                 <ul>
                     <li><span itemprop='addressRegion'>Wellington</span>, <span itemprop='addressCountry'>New Zealand</span></li>
-                    <li><a itemprop='telephone' href="tel:0064-22-186-1340">+64.22.186.1340</a></li>
+                    <li><a itemprop='telephone' href="tel:0064-22-568-8907">+64.22.568.8907</a></li>
                     <li><a itemprop='email' href="mailto:me@richardsime.com">me@richardsime.com</a></li>
                 </ul>
                 <h1><b itemprop='givenName'>Richard</b> <b itemprop='familyName'>Sime</b> <em>\</em> <span itemprop='jobTitle'>Front-end Developer</span></h1>
