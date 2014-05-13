@@ -1,4 +1,0 @@
-AuthType Basic  
-AuthName "Restricted"  
-AuthUserFile http://richardsime.com/asb/.htpasswd
-require valid-user
