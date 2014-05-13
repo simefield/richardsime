@@ -8,6 +8,7 @@ _visual*
 *.psd
 *.ai
 portfolio/2011
+client
 
 # pesky dot files
 .DS_Store
