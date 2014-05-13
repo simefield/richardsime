@@ -1,0 +1,132 @@
+/* Copyright 2013 Richard Sime */
+* {
+	float: none !important;
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+
+	display: block !important;
+	/*clear: left;*/
+	float: none !important;
+	margin-right: 0  !important;
+	margin-left: 0  !important;
+	padding-right: 0  !important;
+	padding-left: 0  !important;
+	width: auto !important;
+	max-width: 100% !important;
+	border-left: none !important;
+	border-right: none !important;
+	border-bottom: none !important;
+	background-image: none !important;
+	height: auto !important;
+}
+script,
+object,
+title {
+	display: none !important;
+}
+html {
+    font-size: 120% !important;
+}
+h1 {
+    font-size: 22px !important;
+}
+h2 {
+    font-size: 17px !important;
+}
+img {
+	width: 100% !important;
+	max-width: 100% !important;
+}
+li{display: inline !important;}
+
+#pageWrapper {
+	padding: 0 15px !important;	
+}
+
+#headerWrapper {
+	margin-right: -15px !important;
+	margin-left: -15px !important;
+}
+#ctl00_ContentDiv{
+	display: -webkit-flex !important;
+	display: flex !important;
+	-webkit-flex-flow: column;
+	flex-flow: column;
+}
+
+#homeSideWrapper {
+	-webkit-order: 2 !important;
+	order: 2 !important;
+	/*-webkit-flex: 1 6 20%;
+	flex: 1 6 20%;*/
+}
+#homeMainWrapper {
+	-webkit-order: 1 !important;
+	order: 1 !important;
+	/*-webkit-flex: 1 6 20%;
+	flex: 1 6 20%;*/
+}
+
+#galleryDetailsWrapper {
+	display: none !important;
+}
+
+#homeFeatureWrapper .PageList > div{
+/*	display: -webkit-flex !important;
+	display: flex !important;
+	-webkit-flex-flow: row;
+	flex-flow: row;*/
+
+    display: inline-block !important;
+    *display: inline;
+    vertical-align: top;
+    zoom: 1; 
+}
+
+.featureLeft {
+/*-webkit-flex: 1 2 50%;
+	flex: 1 2 50%;*/
+	/*float: left;*/
+	width: 48% !important;
+    margin-right: 3% !important;
+}
+.featureRight {
+/*-webkit-flex: 1 2 50%;
+	flex: 1 2 50%;*/
+	/*float: right !important;*/
+width: 48% !important;
+margin-left: -3px !important;
+
+
+}
+
+
+#homeMoreWrapper .PageList .itemWrapper {
+	display: -webkit-flex !important;
+	display: flex !important;
+	-webkit-flex-flow: column;
+	flex-flow: column;
+}
+.itemWrapper a:first-child {
+	-webkit-order: 3;
+	order: 3;
+}
+.itemWrapper h2 {
+	-webkit-order: 1;
+	order: 1;
+}
+.itemWrapper span {
+	-webkit-order: 2;
+	order: 2;
+}
+.itemWrapper p {
+	-webkit-order: 4;
+	order: 4;
+}
+
+ul#featureLinks li {
+    background: transparent url(../images/bulletPinkArrow.gif) no-repeat 0 2px !important;
+    padding-left: 15px !important;
+    display: inline-block  !important;
+}

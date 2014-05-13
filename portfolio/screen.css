@@ -1,0 +1,128 @@
+body {
+	margin: 0;
+	background: url('images/bg_page.gif') fixed repeat-x #ebebeb;
+	font-family: helvetica, arial, sans-serif;
+	}
+#preloadImages {display: none;}
+div.clearer {clear: both;}
+ul, li {margin: 0; padding: 0;}
+a {text-decoration: none;}
+
+
+div#wrapper {border: 0px solid red;
+	background-color: #333;
+	width: 825px;
+	padding: 15px 0 0 35px;/* share positioning role with margins on div.window */
+	}
+div#nav {
+	width: 860px;
+	position: fixed;
+	left: 0;
+	top: 0;
+	z-index: 2;
+	background-color: #000;
+	height: 20px;
+	overflow: hidden;
+	border-bottom: 0px solid #333;
+	}
+div#nav ul li {
+	position: relative;
+	left: 37px;
+	font-size: 11px;
+	letter-spacing: 1px;
+	color: #fff;
+	list-style: none;
+	line-height: 15px;
+	}
+div#nav ul li a {
+	color: #fff;
+	padding: 4px 12px;
+	float: left;
+	border-right: 1px solid #333;
+	}
+div#nav ul li a.borderLeft {
+	border-left: 1px solid #333;
+	}
+div#nav ul li a:hover {
+	background-color: #0E92FE;
+	}
+div#navshadow {
+	width: 860px;
+height: 5px;
+	position: fixed;
+	left: 0;
+	top: 20px;
+	z-index: 3;
+	background: url('images/shadow_nav.png') repeat-x transparent;
+	}
+h2 {
+	width: 771px;
+	color: #0E92FE;
+	font-weight: 300;
+	font-size: 14px;
+	border-top: 4px solid #014176;
+	border-top: 1px solid #286699;
+	margin: 30px 0 -20px 0;
+	padding-top: 5px;
+	position: relative;
+	left: 3px;
+	}
+div.window {
+	width: 366px;
+	height: 273px;
+	background-image: url('images/window.png');
+	float: left;
+	margin: 30px 45px 5px 0;/* share positioning role with padding on div#wrapper */
+	position: relative;/* parent to absolutely positioned contents */
+	}
+div.window img {
+	position: absolute;
+	left: 78px;
+	top: 41px;
+	}
+span {
+	border: 0 solid #fff;
+	font-size: 11px;
+	padding: 1px 4px 0 6px;
+	line-height: 17px;
+	position: absolute;
+	overflow: hidden;
+	}
+/* Websites */
+div.web {background-color: #D9EEFF;}
+div.interface {background-color: #FFE7D9;}
+div.brand {background-color: #FFD9E8;}
+div.model {background-color: #FFF7D9;}
+div.info {
+	position: absolute;
+	left: 3px;
+	bottom: 5px;
+	width: 360px;
+	height: 33px;
+	}
+span a {color: #1D98FE;}
+span a:hover {color: #035BFD;}
+span.title {
+	border-width: 0 1px 0 0;
+	width: 110px; height: 32px;
+	left: 0; top: 0;
+	}
+span.title a {
+	display: block;
+	}
+span.client {
+	width: 229px; height: 16px;
+	left: 121px; top: 0;
+	}
+span.tasks {
+	border-width: 1px 0 0 0;
+	width: 229px; height: 16px;
+	left: 121px; top: 16px;
+	}
+span.link {
+	border-width: 0 0 0 1px;
+	width: 98px; height: 16px;
+	left: 250px; top: 0;
+	}
+
+/* 3D */

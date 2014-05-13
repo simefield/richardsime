@@ -1,0 +1,740 @@
+/*–––––––––––––––––––––––––––––
+    Copyright 2013 Richard Sime
+–––––––––––––––––––––––––––––––*/
+
+
+/*–––––––––––––––––––––––––––––
+    Window width widget
+–––––––––––––––––––––––––––––––*/
+/*p#temp_window_width {
+    padding: 2px 5px 3px;
+    border-radius: 2px;
+    position: fixed;
+    z-index: 100;
+    right: 20px;
+    bottom: 6px;
+    color: #999;
+    font-size: 12px;
+    line-height: 1em;
+    margin-bottom: 0;
+    background: rgba(0,0,0,0.85);
+    font-family: courier;
+    text-indent: 0;
+display: none !important;
+}*/
+
+
+
+/*–––––––––––––––––––––––––––––
+    SASS
+–––––––––––––––––––––––––––––––*/
+
+/* variables */
+$global_padding: 14px;
+$global_padding_large: 30px;
+$img_width: 584px;
+$max_width: $img_width + (2 * $global_padding_large);
+/* colours */
+$paper: #f7f7ec;
+$paper_dark: #f3f3e2;
+$black: #1d1d1b;
+$pink: #f2bec0;
+$dark_pink: #ce7f77;
+$blue: #6cb7cc;
+$dark_blue: #3a83a3;
+
+
+/* functions */
+@function pxem($px, $context: 15px) {
+    @return ($px / $context) * 1em;
+}
+
+/* mixins */
+@mixin small {
+  @media only screen and (max-width: 480px) {
+    @content;
+  }
+}
+@mixin medium {
+  @media only screen and (min-width: 612px) {
+    @content;
+  }
+}
+
+
+/* functional base classes */
+.helvetica {
+    font-family: Helvetica, HelveticaNeue, 'Helvetica Neue', sans-serif;
+    font-stretch: normal;
+}
+.helvetica_condensed_bold {
+    font-family: HelveticaNeue-CondensedBold, 'Helvetica Neue', Helvetica, sans-serif;
+    font-stretch: condensed;
+    -webkit-font-smoothing: antialiased;
+    font-smoothing: antialiased;
+}
+.helvetica_light {
+    font-family: HelveticaNeue-Light, Helvetica-Light, 'Helvetica Neue', Helvetica, sans-serif;
+    font-weight: 200;
+    font-stretch: normal;
+}
+.border_box {
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+
+/*–––––––––––––––––––––––––––––
+    Reset
+–––––––––––––––––––––––––––––––*/
+html, body, ul, li {margin: 0; padding: 0;}
+table, td {display: block; margin: 0; padding: 0; border: none;}
+header, footer, section, nav, figure, figcaption {display: block; margin: 0; padding: 0;}
+::selection, ::-moz-selection {background: #97beff;}
+
+/*–––––––––––––––––––––––––––––
+    Clearfix
+–––––––––––––––––––––––––––––––*/
+
+.clearfix:after,
+header ul:after,
+nav ul:after,
+figcaption:after,
+dl:after,
+div.slide:after,
+div.text:after,
+.about_me_text:after
+    {content: "."; display: block; height: 0; clear: both; visibility: hidden;}
+
+
+/*–––––––––––––––––––––––––––––
+    General
+–––––––––––––––––––––––––––––––*/
+
+#mask_desktop, #mask_touch {
+    width: 100%;
+    height: 100%;
+    background: #232322 url('../images/bg.png') repeat 50% 0;
+    position: absolute;
+    left: 0;
+    z-index: 100;
+    text-align: center;
+    opacity: 0;
+    
+    img {
+        margin-top: 80px;
+        max-width: 80.625%;
+    }
+}
+/* class added in JS */
+.fade_out {
+    -webkit-transition: opacity 1s linear;
+    transition: opacity 1s linear;
+    opacity: 0 !important;
+}
+
+
+body {
+    -webkit-text-size-adjust: none;
+    @extend .helvetica_light;
+    font-size: 15px;
+    line-height: 1.28571428571;
+    color: #1c1614;
+    color: $black;
+
+    &.portfolio #wrapper {
+        background: $pink;
+    }
+
+    &.about_me #wrapper {
+        background: $blue;
+    }
+}
+
+h1 {
+    @extend .helvetica_condensed_bold;
+    font-size: pxem(20px);
+    margin: pxem(10px) 0 0.25em;
+
+    em {
+        @extend .helvetica_light;
+    }
+
+    span {
+        font-size: 13px;
+        @extend .helvetica_light;
+    }
+}
+
+h2 {
+    @extend .helvetica_condensed_bold;
+    margin: 0;
+    font-size: 1em;
+}
+
+
+a {
+    text-decoration: none;
+}
+
+p {
+    margin: 0;
+    text-indent: 1em;
+
+    &.first:first-line {
+        @extend .helvetica_condensed_bold;
+        font-size: pxem(20px);
+        margin: pxem(10px) 0 0.25em;
+    }
+
+    div + &,
+    h1 + &,
+    figure + & {
+        text-indent: 0;        
+    }
+}
+
+
+/*–––––––––––––––––––––––––––––
+    Header
+–––––––––––––––––––––––––––––––*/
+header {
+    background: $paper;
+
+    @include small {
+        background: $paper_dark;
+    }
+
+    color: #1d1d1b;
+    position: relative;
+    padding-bottom: 6px;
+
+    /*border-top: 1px solid black;*/
+
+    h1 {
+        margin: pxem(14px) 0 0;
+        padding: 0 $global_padding;
+
+        @include medium {
+            padding-right: $global_padding_large;
+            padding-left: $global_padding_large;
+        }
+    }
+
+    ul {
+        background: url('../images/dots-hoz.gif') repeat-x 0 100%;
+        position: relative;
+
+
+        li {
+            text-align: center;
+            list-style: none;
+            font-size: pxem(9px);
+            color: #8f8f80;
+            color: #6f6f65;
+            float: left;
+            padding: 4px 10px 5px;
+            background: url('../images/dots-vert.gif') repeat-y 0 2px;
+
+            @extend .border_box;
+
+            &:nth-child(1) {
+                width: 38%;
+                background: none;
+                /*padding-left: $global_padding;*/
+                
+                &:before, &:after {
+                    position: absolute;
+                    content: '';
+                    width: 5px;
+                    height: 5px;
+                    top: 0;
+                }
+                &:before {
+                    background: url('../images/radius-tl.png');
+                    left: 0;
+                }
+                &:after {
+                    background: url('../images/radius-tr.png');
+                    right: 0;
+                }
+            }
+            &:nth-child(2) {
+                width: 29%;
+                /*text-align: center;*/
+            }
+            &:nth-child(3) {
+                width: 33%;
+                /*text-align: right;*/
+            }
+            a {
+                display: block;
+                color: #6f6f65;
+            }
+        
+        }
+    }
+
+    &:before, &:after {
+        position: absolute;
+        content: '';
+        background: #1c1c1b;
+        width: 6px;
+        height: 12px;
+        bottom: -7px;
+        z-index: 20;
+    }
+    &:before {
+        border-radius: 0 6px 6px 0;
+        left: 0;
+    }
+    &:after {
+        border-radius: 6px 0 0 6px;
+        right: 0;
+    }
+}
+
+
+/*–––––––––––––––––––––––––––––
+    Content container
+–––––––––––––––––––––––––––––––*/
+#container {
+    padding-bottom: 100px;
+    position: relative;
+
+    .about_me & {
+        padding: 0 $global_padding 50px;    
+        @extend .border_box;
+
+        @include medium {
+            padding-right: $global_padding_large;
+            padding-left: $global_padding_large;
+        }
+    }
+
+    p:first-child {
+        text-indent: 0;
+        margin-top: 10px;
+    }
+    
+    h1 {
+        margin: pxem(14px) 0 pxem(1px);
+
+        margin: 20px 0 0;
+/*        color: $paper !important;
+        xcolor: $pink !important;
+        display: block;
+        background: $dark_pink;
+        xbackground: $black;
+        xposition: absolute;
+        padding: 0 5px;
+*/        
+
+        &:first-child {
+            margin-top: pxem(7px);
+        }
+        
+        & + p {
+            margin-top: 0.5em;
+        }
+    }
+
+    a {
+        color: $black;
+        background: url('../images/dots-black.gif') repeat-x 0 100%;
+    }
+
+    /* shared fade gradient stuff */
+    &:after {
+        position: fixed;
+        content: '';
+        bottom: 0;
+        width: 100%;
+        max-width: $max_width;
+        margin: 0 auto;
+    }
+
+    .portfolio & {
+        overflow: hidden;
+        background: $pink;
+        border-top: 2px solid $dark_pink;
+
+        h1 {
+            color: $dark_pink;
+        }
+
+        .text {
+            @extend .border_box;
+        }
+
+        /* fade strip - pink */
+        &:after {
+            height: 80px;
+            background: -moz-linear-gradient(top,  rgba($pink,0) 0%, rgba($pink,1) 25%, rgba($pink,1) 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba($pink,0)), color-stop(25%,rgba($pink,1)), color-stop(100%,rgba($pink,1))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top,  rgba($pink,0) 0%,rgba($pink,1) 25%,rgba($pink,1) 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top,  rgba($pink,0) 0%,rgba($pink,1) 25%,rgba($pink,1) 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top,  rgba($pink,0) 0%,rgba($pink,1) 25%,rgba($pink,1) 100%); /* IE10+ */
+            background: linear-gradient(to bottom,  rgba($pink,0) 0%,rgba($pink,1) 25%,rgba($pink,1) 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00f2bec0', endColorstr='#f2bec0',GradientType=0 ); /* IE6-9 */
+        }
+    }
+
+    .about_me & {
+        background: $blue;
+        border-top: 2px solid $dark_blue;
+
+        h1, p.first:first-line {
+            color: $dark_blue;
+        }
+
+        /* fade strip - blue */
+        &:after {
+            max-width: 598px;
+            height: 60px;
+            background: -moz-linear-gradient(top,  rgba($blue,0) 0%, rgba($blue,1) 25%, rgba($blue,1) 100%); /* FF3.6+ */
+            background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba($blue,0)), color-stop(25%,rgba($blue,1)), color-stop(100%,rgba($blue,1))); /* Chrome,Safari4+ */
+            background: -webkit-linear-gradient(top,  rgba($blue,0) 0%,rgba($blue,1) 25%,rgba($blue,1) 100%); /* Chrome10+,Safari5.1+ */
+            background: -o-linear-gradient(top,  rgba($blue,0) 0%,rgba($blue,1) 25%,rgba($blue,1) 100%); /* Opera 11.10+ */
+            background: -ms-linear-gradient(top,  rgba($blue,0) 0%,rgba($blue,1) 25%,rgba($blue,1) 100%); /* IE10+ */
+            background: linear-gradient(to bottom,  rgba($blue,0) 0%,rgba($blue,1) 25%,rgba($blue,1) 100%); /* W3C */
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#006cb7cc', endColorstr='#6cb7cc',GradientType=0 ); /* IE6-9 */
+        }
+    }
+    
+    img {
+        max-width: 100%;
+        margin: 6px 0 1px;
+    }
+}
+
+dl {
+    margin-top: 0;
+    font-size: pxem(14px);
+    text-align: left;
+    @extend .border_box;
+    width: 100%;
+
+    .about_me_text & {
+        padding-bottom: 35px;
+        float: none;
+
+        dt {
+            width: 35%;
+        }
+
+        dd {
+            width: 65%;
+        }
+    }
+
+    dt {
+        @extend .helvetica_condensed_bold;
+        margin-top: 5px;
+        float: left;
+        width: 25%;
+    }
+
+    dd {
+        @extend .helvetica_light;
+        margin-left: 0;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        margin-top: 5px;
+        width: 75%;
+        float: left;
+    }
+}
+
+.about_me_text {
+    padding-bottom: 35px;
+
+    div {
+        margin: 0.5em 0 1em; font-size: 0.93333em;
+
+        p {
+            text-indent: 0;
+            margin: 0 !important;
+
+            span {
+                display: block;
+
+                &:nth-child(1), &:nth-child(2) {
+                    display: inline;
+                }
+            }
+        }
+    }
+}
+
+
+
+/*–––––––––––––––––––––––––––––
+    Nav tabs
+–––––––––––––––––––––––––––––––*/
+nav {
+    max-width: $max_width;
+
+    position: fixed;
+    z-index: 20;
+    bottom: -30px;
+    width: 100%;
+    padding: 0 $global_padding;
+    @extend .border_box;
+    -webkit-transition: bottom 0.3s ease-out 200ms;
+    transition: bottom 0.3s ease-out 200ms;
+
+    @include medium {
+        padding-right: $global_padding_large;
+        padding-left: $global_padding_large;
+    }
+    
+    /* class added in JS */
+    &.reveal {
+        bottom: 0;
+    }
+
+    ul {
+            
+        li {
+            list-style: none;
+            float: left;
+            display: block;
+            width: 50%;
+
+            a {
+                @extend .helvetica_condensed_bold;
+                font-size: pxem(13px);
+                text-transform: uppercase;
+                display: block;
+                height: 30px;
+                @extend .border_box;
+                padding: 1px 0 13px 14px;
+                position: relative;
+
+                &:after {
+                    position: absolute;
+                    z-index: 9;
+                    bottom: 0;
+                    content: '';
+                }
+            }
+           
+            .portfolio &:nth-child(1) a {
+                background: $paper;
+
+                @include small {
+                    background: $paper_dark;
+                }
+                color: $black;
+
+                &:after {
+                    right: -5px;
+                    border-bottom: 30px solid $paper;
+                    @include small {
+                        border-bottom-color: $paper_dark;
+                    }
+                    border-right: 10px solid transparent;
+                }
+            }
+            .portfolio &:nth-child(2) a {
+                background: $black;
+                color: $paper;
+                @include small {
+                    color: $paper_dark;
+                }
+
+                &:after {
+                    left: -5px;
+                    border-top: 30px solid $black;
+                    border-left: 10px solid transparent;
+                }                
+            }
+
+            .about_me &:nth-child(1) a {
+                background: $black;
+                color: $paper;
+                @include small {
+                    color: $paper_dark;
+                }
+
+                &:after {
+                    right: -5px;
+                    border-bottom: 30px solid $black;
+                    border-right: 10px solid transparent;
+                }
+            }
+            .about_me &:nth-child(2) a {
+                background: $paper;
+                @include small {
+                    background: $paper_dark;
+                }
+                color: $black;
+
+                &:after {
+                    left: -5px;
+                    border-top: 30px solid $paper;
+                    @include small {
+                        border-top-color: $paper_dark;
+                    }
+                    border-left: 10px solid transparent;
+                }                
+            }
+
+            &:nth-child(1) a {
+                &:hover {
+                    background: $dark_pink;
+                }
+                &:hover:after {                    
+                    border-bottom-color: $dark_pink;
+                }
+            }
+            &:nth-child(2) a {               
+                &:hover {
+                    background: $dark_blue;
+                }
+                &:hover:after {                    
+                    border-top-color: $dark_blue;
+                }
+            }
+
+
+        }
+    }
+}
+
+
+
+/*–––––––––––––––––––––––––––––
+    Slides
+–––––––––––––––––––––––––––––––*/
+html {
+    /*background: $black;*/
+    background: #232322 url('../images/bg.png') fixed repeat 50% 0;
+}
+html, body {
+    height:100%;
+}
+ #wrapper {
+    height: 100%;
+    min-height: 416px;
+    /* desktop sizes */
+    max-width: $max_width;
+    margin: 0 auto;
+    box-shadow: 0 0 40px 40px rgba(0,0,0,0.2);
+}
+#slides {
+    white-space: nowrap;
+    width: 100%;
+    height: 100%;
+    -webkit-transform: translate3d(0px,0,0);
+    transform: translate3d(0px,0,0);
+
+    .slide {
+        white-space: normal;
+        padding: 0 $global_padding;  
+        @extend .border_box;
+        display: inline-block;
+        vertical-align: top;
+        width: 100%;
+        max-width: $max_width;
+        min-height: 315px; /* set a min-height so the slide doesn't scroll up too far when #slides height set in JS */
+
+        @include medium {
+            padding-right: $global_padding_large;
+            padding-left: $global_padding_large;
+        }
+    }
+}
+.animate {
+    -webkit-transition: all .3s ease-out;
+    transition: all .3s ease-out;
+}
+
+#bullets {
+    position: fixed;
+    left: 0;
+    bottom: 45px;
+    width: 100%;
+    height: 10px;
+    text-align: center;
+    z-index: 10;
+    
+    .bullet {
+        display: inline-block;
+        border: solid #cfa2a2 3px;
+        border-radius: 3px;
+        margin: 5px;
+        
+        &.selected {
+        border-color: $paper;
+
+            @include small {
+                border-color: $paper_dark;
+            }
+        }
+    }
+}
+
+
+
+/*–––––––––––––––––––––––––––––
+    Responsive
+–––––––––––––––––––––––––––––––*/
+@media screen and (min-width: 480px) {
+
+    #container {
+
+        p {
+            text-indent: 0;
+            margin-top: 0.75em;
+            text-align: justify;
+
+            &.first {
+                margin-top: 10px;
+            }
+        }
+    }
+
+    .portfolio dl {
+        width: 40%;
+        float: right;
+        padding-left: 10px;
+        /*@extend .border_box;*/
+
+        dt {
+            width: 100%;
+            margin-top: 10px;
+        }
+
+        dd {
+            width: 100%;
+            margin-top: 0;
+        }
+    }
+    
+    .text {
+        padding-right: 10px;
+        width: 60%;
+        float: left;
+    }
+    
+    .about_me_text div {
+        width: 50%;
+        float: left;
+    }
+}
+
+@media screen and (min-width: $max_width) {
+
+    body {
+        font-size: 16px;
+    }
+
+    .text {
+        padding-right: 15px;
+    }
+}
+
+

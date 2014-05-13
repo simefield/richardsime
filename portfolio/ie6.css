@@ -1,0 +1,32 @@
+html, body {
+	height: 100%;
+	overflow: auto; 
+	}
+div#nav {
+	position: absolute;
+	}
+div#nav ul li {
+	float: left;
+	}
+div#nav ul li a {
+	padding-top: 2px;
+	}
+div#navshadow {
+	filter:progid:DXImageTransform.Microsoft.AlphaImageLoader(src='images/shadow_nav.png', sizingMethod='scale');
+	background-image: none !important;
+	}
+div.window {
+	display: inline;/* fixes double-margin bug */
+	}
+div.crop {
+	overflow: hidden;
+	}
+div#cv {
+	position: absolute;
+	}
+div#cvmenu ul li {
+	float: left;
+	}
+div#cvmenu ul li a {
+	padding-top: 2px;
+	}

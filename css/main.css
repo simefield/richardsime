@@ -1,0 +1,501 @@
+/*–––––––––––––––––––––––––––––
+    Copyright 2013 Richard Sime
+–––––––––––––––––––––––––––––––*/
+
+/*–––––––––––––––––––––––––––––
+    SASS
+–––––––––––––––––––––––––––––––*/
+/* variables */
+/* colours */
+/* functions */
+/* mixins */
+/* functional base classes */
+.helvetica {
+  font-family: Helvetica, HelveticaNeue, "Helvetica Neue", sans-serif;
+  font-stretch: normal; }
+
+.helvetica_condensed_bold, h1, h2, p.first:first-line, dl dt, nav ul li a {
+  font-family: HelveticaNeue-CondensedBold, "Helvetica Neue", Helvetica, sans-serif;
+  font-stretch: condensed;
+  -webkit-font-smoothing: antialiased;
+  font-smoothing: antialiased; }
+
+.helvetica_light, body, h1 em, h1 span, dl dd {
+  font-family: HelveticaNeue-Light, Helvetica-Light, "Helvetica Neue", Helvetica, sans-serif;
+  font-weight: 200;
+  font-stretch: normal; }
+
+.border_box, header ul li, .about_me #container, .portfolio #container .text, dl, nav, nav ul li a, #slides .slide {
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box; }
+
+/*–––––––––––––––––––––––––––––
+    Reset
+–––––––––––––––––––––––––––––––*/
+html, body, ul, li {
+  margin: 0;
+  padding: 0; }
+
+table, td {
+  display: block;
+  margin: 0;
+  padding: 0;
+  border: none; }
+
+header, footer, section, nav, figure, figcaption {
+  display: block;
+  margin: 0;
+  padding: 0; }
+
+::selection, ::-moz-selection {
+  background: #97beff; }
+
+/*–––––––––––––––––––––––––––––
+    Clearfix
+–––––––––––––––––––––––––––––––*/
+.clearfix:after,
+header ul:after,
+nav ul:after,
+figcaption:after,
+dl:after,
+div.slide:after,
+div.text:after,
+.about_me_text:after {
+  content: ".";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden; }
+
+/*–––––––––––––––––––––––––––––
+    General
+–––––––––––––––––––––––––––––––*/
+#mask_desktop, #mask_touch {
+  width: 100%;
+  height: 100%;
+  background: #232322 url("../images/bg.png") repeat 50% 0;
+  position: absolute;
+  left: 0;
+  z-index: 100;
+  text-align: center;
+  opacity: 0; }
+  #mask_desktop img, #mask_touch img {
+    margin-top: 80px;
+    max-width: 80.625%; }
+
+/* class added in JS */
+.fade_out {
+  -webkit-transition: opacity 1s linear;
+  transition: opacity 1s linear;
+  opacity: 0 !important; }
+
+body {
+  -webkit-text-size-adjust: none;
+  font-size: 15px;
+  line-height: 1.28571428571;
+  color: #1c1614;
+  color: #1d1d1b; }
+  body.portfolio #wrapper {
+    background: #f2bec0; }
+  body.about_me #wrapper {
+    background: #6cb7cc; }
+
+h1 {
+  font-size: 1.33333em;
+  margin: 0.66667em 0 0.25em; }
+  h1 span {
+    font-size: 13px; }
+
+h2 {
+  margin: 0;
+  font-size: 1em; }
+
+a {
+  text-decoration: none; }
+
+p {
+  margin: 0;
+  text-indent: 1em; }
+  p.first:first-line {
+    font-size: 1.33333em;
+    margin: 0.66667em 0 0.25em; }
+  div + p, h1 + p, figure + p {
+    text-indent: 0; }
+
+/*–––––––––––––––––––––––––––––
+    Header
+–––––––––––––––––––––––––––––––*/
+header {
+  background: #f7f7ec;
+  color: #1d1d1b;
+  position: relative;
+  padding-bottom: 6px;
+  /*border-top: 1px solid black;*/ }
+  @media only screen and (max-width: 480px) {
+    header {
+      background: #f3f3e2; } }
+  header h1 {
+    margin: 0.93333em 0 0;
+    padding: 0 14px; }
+    @media only screen and (min-width: 612px) {
+      header h1 {
+        padding-right: 30px;
+        padding-left: 30px; } }
+  header ul {
+    background: url("../images/dots-hoz.gif") repeat-x 0 100%;
+    position: relative; }
+    header ul li {
+      text-align: center;
+      list-style: none;
+      font-size: 0.6em;
+      color: #8f8f80;
+      color: #6f6f65;
+      float: left;
+      padding: 4px 10px 5px;
+      background: url("../images/dots-vert.gif") repeat-y 0 2px; }
+      header ul li:nth-child(1) {
+        width: 38%;
+        background: none; }
+        header ul li:nth-child(1):before, header ul li:nth-child(1):after {
+          position: absolute;
+          content: '';
+          width: 5px;
+          height: 5px;
+          top: 0; }
+        header ul li:nth-child(1):before {
+          background: url("../images/radius-tl.png");
+          left: 0; }
+        header ul li:nth-child(1):after {
+          background: url("../images/radius-tr.png");
+          right: 0; }
+      header ul li:nth-child(2) {
+        width: 29%; }
+      header ul li:nth-child(3) {
+        width: 33%; }
+      header ul li a {
+        display: block;
+        color: #6f6f65; }
+  header:before, header:after {
+    position: absolute;
+    content: '';
+    background: #1c1c1b;
+    width: 6px;
+    height: 12px;
+    bottom: -7px;
+    z-index: 20; }
+  header:before {
+    border-radius: 0 6px 6px 0;
+    left: 0; }
+  header:after {
+    border-radius: 6px 0 0 6px;
+    right: 0; }
+
+/*–––––––––––––––––––––––––––––
+    Content container
+–––––––––––––––––––––––––––––––*/
+#container {
+  padding-bottom: 100px;
+  position: relative;
+  /* shared fade gradient */ }
+  .about_me #container {
+    padding: 0 14px 50px; }
+    @media only screen and (min-width: 612px) {
+      .about_me #container {
+        padding-right: 30px;
+        padding-left: 30px; } }
+  #container p:first-child {
+    text-indent: 0;
+    margin-top: 10px; }
+  #container h1 {
+    margin: 0.93333em 0 0.06667em;
+    margin: 20px 0 0; }
+    #container h1:first-child {
+      margin-top: 0.46667em; }
+    #container h1 + p {
+      margin-top: 0.5em; }
+  #container a {
+    color: #1d1d1b;
+    background: url("../images/dots-black.gif") repeat-x 0 100%; }
+  #container:after {
+    position: fixed;
+    content: '';
+    bottom: 0;
+    width: 100%;
+    max-width: 644px;
+    margin: 0 auto; }
+  .portfolio #container {
+    overflow: hidden;
+    background: #f2bec0;
+    border-top: 2px solid #ce7f77;
+    /* fade strip - pink */ }
+    .portfolio #container h1 {
+      color: #ce7f77; }
+    .portfolio #container:after {
+      height: 80px;
+      background: -moz-linear-gradient(top, rgba(242, 190, 192, 0) 0%, #f2bec0 25%, #f2bec0 100%);
+      /* FF3.6+ */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(242, 190, 192, 0)), color-stop(25%, #f2bec0), color-stop(100%, #f2bec0));
+      /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(top, rgba(242, 190, 192, 0) 0%, #f2bec0 25%, #f2bec0 100%);
+      /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(top, rgba(242, 190, 192, 0) 0%, #f2bec0 25%, #f2bec0 100%);
+      /* Opera 11.10+ */
+      background: -ms-linear-gradient(top, rgba(242, 190, 192, 0) 0%, #f2bec0 25%, #f2bec0 100%);
+      /* IE10+ */
+      background: linear-gradient(to bottom, rgba(242, 190, 192, 0) 0%, #f2bec0 25%, #f2bec0 100%);
+      /* W3C */
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#00f2bec0', endColorstr='#f2bec0',GradientType=0 );
+      /* IE6-9 */ }
+  .about_me #container {
+    background: #6cb7cc;
+    border-top: 2px solid #3a83a3;
+    /* fade strip - blue */ }
+    .about_me #container h1, .about_me #container p.first:first-line {
+      color: #3a83a3; }
+    .about_me #container:after {
+      max-width: 598px;
+      height: 60px;
+      background: -moz-linear-gradient(top, rgba(108, 183, 204, 0) 0%, #6cb7cc 25%, #6cb7cc 100%);
+      /* FF3.6+ */
+      background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, rgba(108, 183, 204, 0)), color-stop(25%, #6cb7cc), color-stop(100%, #6cb7cc));
+      /* Chrome,Safari4+ */
+      background: -webkit-linear-gradient(top, rgba(108, 183, 204, 0) 0%, #6cb7cc 25%, #6cb7cc 100%);
+      /* Chrome10+,Safari5.1+ */
+      background: -o-linear-gradient(top, rgba(108, 183, 204, 0) 0%, #6cb7cc 25%, #6cb7cc 100%);
+      /* Opera 11.10+ */
+      background: -ms-linear-gradient(top, rgba(108, 183, 204, 0) 0%, #6cb7cc 25%, #6cb7cc 100%);
+      /* IE10+ */
+      background: linear-gradient(to bottom, rgba(108, 183, 204, 0) 0%, #6cb7cc 25%, #6cb7cc 100%);
+      /* W3C */
+      filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#006cb7cc', endColorstr='#6cb7cc',GradientType=0 );
+      /* IE6-9 */ }
+  #container img {
+    max-width: 100%;
+    margin: 6px 0 1px; }
+
+dl {
+  margin-top: 0;
+  font-size: 0.93333em;
+  text-align: left;
+  width: 100%; }
+  .about_me_text dl {
+    padding-bottom: 35px;
+    float: none; }
+    .about_me_text dl dt {
+      width: 35%; }
+    .about_me_text dl dd {
+      width: 65%; }
+  dl dt {
+    margin-top: 5px;
+    float: left;
+    width: 25%; }
+  dl dd {
+    margin-left: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    margin-top: 5px;
+    width: 75%;
+    float: left; }
+
+.about_me_text {
+  padding-bottom: 35px; }
+  .about_me_text div {
+    margin: 0.5em 0 1em;
+    font-size: 0.93333em; }
+    .about_me_text div p {
+      text-indent: 0;
+      margin: 0 !important; }
+      .about_me_text div p span {
+        display: block; }
+        .about_me_text div p span:nth-child(1), .about_me_text div p span:nth-child(2) {
+          display: inline; }
+
+/*–––––––––––––––––––––––––––––
+    Nav tabs
+–––––––––––––––––––––––––––––––*/
+nav {
+  max-width: 644px;
+  position: fixed;
+  z-index: 20;
+  bottom: -30px;
+  width: 100%;
+  padding: 0 14px;
+  -webkit-transition: bottom 0.3s ease-out 200ms;
+  transition: bottom 0.3s ease-out 200ms;
+  /* class added in JS */ }
+  @media only screen and (min-width: 612px) {
+    nav {
+      padding-right: 30px;
+      padding-left: 30px; } }
+  nav.reveal {
+    bottom: 0; }
+  nav ul li {
+    list-style: none;
+    float: left;
+    display: block;
+    width: 50%; }
+    nav ul li a {
+      font-size: 0.86667em;
+      text-transform: uppercase;
+      display: block;
+      height: 30px;
+      padding: 1px 0 13px 14px;
+      position: relative; }
+      nav ul li a:after {
+        position: absolute;
+        z-index: 9;
+        bottom: 0;
+        content: ''; }
+    .portfolio nav ul li:nth-child(1) a {
+      background: #f7f7ec;
+      color: #1d1d1b; }
+      @media only screen and (max-width: 480px) {
+        .portfolio nav ul li:nth-child(1) a {
+          background: #f3f3e2; } }
+      .portfolio nav ul li:nth-child(1) a:after {
+        right: -5px;
+        border-bottom: 30px solid #f7f7ec;
+        border-right: 10px solid transparent; }
+        @media only screen and (max-width: 480px) {
+          .portfolio nav ul li:nth-child(1) a:after {
+            border-bottom-color: #f3f3e2; } }
+    .portfolio nav ul li:nth-child(2) a {
+      background: #1d1d1b;
+      color: #f7f7ec; }
+      @media only screen and (max-width: 480px) {
+        .portfolio nav ul li:nth-child(2) a {
+          color: #f3f3e2; } }
+      .portfolio nav ul li:nth-child(2) a:after {
+        left: -5px;
+        border-top: 30px solid #1d1d1b;
+        border-left: 10px solid transparent; }
+    .about_me nav ul li:nth-child(1) a {
+      background: #1d1d1b;
+      color: #f7f7ec; }
+      @media only screen and (max-width: 480px) {
+        .about_me nav ul li:nth-child(1) a {
+          color: #f3f3e2; } }
+      .about_me nav ul li:nth-child(1) a:after {
+        right: -5px;
+        border-bottom: 30px solid #1d1d1b;
+        border-right: 10px solid transparent; }
+    .about_me nav ul li:nth-child(2) a {
+      background: #f7f7ec;
+      color: #1d1d1b; }
+      @media only screen and (max-width: 480px) {
+        .about_me nav ul li:nth-child(2) a {
+          background: #f3f3e2; } }
+      .about_me nav ul li:nth-child(2) a:after {
+        left: -5px;
+        border-top: 30px solid #f7f7ec;
+        border-left: 10px solid transparent; }
+        @media only screen and (max-width: 480px) {
+          .about_me nav ul li:nth-child(2) a:after {
+            border-top-color: #f3f3e2; } }
+    nav ul li:nth-child(1) a:hover {
+      background: #ce7f77; }
+    nav ul li:nth-child(1) a:hover:after {
+      border-bottom-color: #ce7f77; }
+    nav ul li:nth-child(2) a:hover {
+      background: #3a83a3; }
+    nav ul li:nth-child(2) a:hover:after {
+      border-top-color: #3a83a3; }
+
+/*–––––––––––––––––––––––––––––
+    Slides
+–––––––––––––––––––––––––––––––*/
+html {
+  background: #232322 url("../images/bg.png") fixed repeat 50% 0; }
+
+html, body {
+  height: 100%; }
+
+#wrapper {
+  height: 100%;
+  min-height: 416px;
+  /* desktop sizes */
+  max-width: 644px;
+  margin: 0 auto;
+  box-shadow: 0 0 40px 40px rgba(0, 0, 0, 0.2); }
+
+#slides {
+  white-space: nowrap;
+  width: 100%;
+  height: 100%;
+  -webkit-transform: translate3d(0px, 0, 0);
+  transform: translate3d(0px, 0, 0); }
+  #slides .slide {
+    white-space: normal;
+    padding: 0 14px;
+    display: inline-block;
+    vertical-align: top;
+    width: 100%;
+    max-width: 644px;
+    min-height: 315px;
+    /* set a min-height so the slide doesn't scroll up too far when #slides height set in JS */ }
+    @media only screen and (min-width: 612px) {
+      #slides .slide {
+        padding-right: 30px;
+        padding-left: 30px; } }
+
+.animate {
+  -webkit-transition: all 0.3s ease-out;
+  transition: all 0.3s ease-out; }
+
+#bullets {
+  position: fixed;
+  left: 0;
+  bottom: 45px;
+  width: 100%;
+  height: 10px;
+  text-align: center;
+  z-index: 10; }
+  #bullets .bullet {
+    display: inline-block;
+    border: solid #cfa2a2 3px;
+    border-radius: 3px;
+    margin: 5px; }
+    #bullets .bullet.selected {
+      border-color: #f7f7ec; }
+      @media only screen and (max-width: 480px) {
+        #bullets .bullet.selected {
+          border-color: #f3f3e2; } }
+
+/*–––––––––––––––––––––––––––––
+    Responsive
+–––––––––––––––––––––––––––––––*/
+@media screen and (min-width: 480px) {
+  #container p {
+    text-indent: 0;
+    margin-top: 0.75em;
+    text-align: justify; }
+    #container p.first {
+      margin-top: 10px; }
+
+  .portfolio dl {
+    width: 40%;
+    float: right;
+    padding-left: 10px;
+    /*@extend .border_box;*/ }
+    .portfolio dl dt {
+      width: 100%;
+      margin-top: 10px; }
+    .portfolio dl dd {
+      width: 100%;
+      margin-top: 0; }
+
+  .text {
+    padding-right: 10px;
+    width: 60%;
+    float: left; }
+
+  .about_me_text div {
+    width: 50%;
+    float: left; } }
+@media screen and (min-width: 644px) {
+  body {
+    font-size: 16px; }
+
+  .text {
+    padding-right: 15px; } }

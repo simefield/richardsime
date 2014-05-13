@@ -1,0 +1,14 @@
+# ignore visual design (photoshop) folders
+_visual*
+
+# folders & files to ignore
+3d-css
+*.rtf
+*.txt
+*.psd
+*.ai
+portfolio/2011
+
+# pesky dot files
+.DS_Store
+.sass-cache

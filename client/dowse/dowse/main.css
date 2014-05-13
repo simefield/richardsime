@@ -1,0 +1,119 @@
+
+
+/* Copyright 2013 Richard Sime */
+
+@font-face {
+    font-family: 'sanchezregular';
+    src: url('../fonts/Sanchez-Regular-webfont.eot');
+    src: url('../fonts/Sanchez-Regular-webfont.eot?#iefix') format('embedded-opentype'),
+         url('../fonts/Sanchez-Regular-webfont.woff') format('woff'),
+         url('../fonts/Sanchez-Regular-webfont.ttf') format('truetype'),
+         url('../fonts/Sanchez-Regular-webfont.svg#sanchezregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+@font-face {
+    font-family: 'sanchezitalic';
+    src: url('fonts/Sanchez-italic-webfont.eot');
+    src: url('fonts/Sanchez-italic-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/Sanchez-italic-webfont.woff') format('woff'),
+         url('fonts/Sanchez-italic-webfont.ttf') format('truetype'),
+         url('fonts/Sanchez-italic-webfont.svg#sanchezitalic') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+section {
+	display: block;
+	float: left;
+	margin-left: 120px;
+}
+/*div {
+	width: 379px;
+	height: 742px;
+	background: url('../iphone.png') no-repeat 0 0;
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+	padding: 132px 0 0 32px;
+	position: relative;
+	overflow: hidden;
+}*/
+
+/*div:after {
+	position: absolute;
+	top: 132px;
+	left: 219px;
+	content: '';
+	width: 132px;
+	height: 407px;
+	background: url('../iphone-gloss.png') no-repeat 0 0;
+}*/
+
+
+div {
+	width: 379px;
+	height: 742px;
+	-webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+	padding: 152px 0 0 32px;
+	position: relative;
+	overflow: hidden;
+
+border-radius: 55px;
+background: #1a1a1a url('../iphone-chrome.png') no-repeat 32px 132px;
+
+z-index: 99;
+
+}
+iframe:after {
+	position: absolute;
+	top: 132px;
+	left: 32px;
+	content: '';
+	width: 320px;
+	height: 480px;
+background: url('../iphone-chrome.png') no-repeat 0 0;
+
+
+}
+div:before {
+	position: absolute;
+	bottom: 32px;
+	left: 154px;
+	content: '';
+	width: 70px;
+	height: 70px;
+border-radius: 35px;
+/*background-color: #000;*/
+
+
+background: rgb(19,19,19); /* Old browsers */
+background: -moz-linear-gradient(top,  rgba(19,19,19,1) 0%, rgba(0,0,0,1) 50%, rgba(44,44,44,1) 50%, rgba(76,76,76,1) 100%); /* FF3.6+ */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(19,19,19,1)), color-stop(50%,rgba(0,0,0,1)), color-stop(50%,rgba(44,44,44,1)), color-stop(100%,rgba(76,76,76,1))); /* Chrome,Safari4+ */
+background: -webkit-linear-gradient(top,  rgba(19,19,19,1) 0%,rgba(0,0,0,1) 50%,rgba(44,44,44,1) 50%,rgba(76,76,76,1) 100%); /* Chrome10+,Safari5.1+ */
+background: -o-linear-gradient(top,  rgba(19,19,19,1) 0%,rgba(0,0,0,1) 50%,rgba(44,44,44,1) 50%,rgba(76,76,76,1) 100%); /* Opera 11.10+ */
+background: -ms-linear-gradient(top,  rgba(19,19,19,1) 0%,rgba(0,0,0,1) 50%,rgba(44,44,44,1) 50%,rgba(76,76,76,1) 100%); /* IE10+ */
+background: linear-gradient(to bottom,  rgba(19,19,19,1) 0%,rgba(0,0,0,1) 50%,rgba(44,44,44,1) 50%,rgba(76,76,76,1) 100%); /* W3C */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#131313', endColorstr='#4c4c4c',GradientType=0 ); /* IE6-9 */
+
+}
+
+
+html {
+	/*font-family: HelveticaNeue-UltraLight, sans-serif;*/
+	font-family: 'sanchezregular', sans-serif;
+	background: #4c4c4c;
+	color: #fff;
+}
+
+h1 {
+	font-weight: normal;
+}
+
+iframe {
+	position: relative;
+}
+
+
